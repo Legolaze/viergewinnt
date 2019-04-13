@@ -11,9 +11,9 @@ public class Board {
 		m_grid = new Color[7][6];
 		m_activePlayer = Color.RED;
 
-		for (Color[] column : m_grid) {
-			for (Color field : column) {
-				field = Color.NONE;
+		for (int column = 0; column < m_grid.length; column++) {
+			for (int row = 0; row < m_grid[column].length; row++) {
+				m_grid[column][row] = Color.NONE;
 			}
 		}
 
@@ -35,7 +35,7 @@ public class Board {
 		if (column >= 0 && column < m_grid.length) {
 
 			int rowIndex = 0;
-			while (m_grid[column][rowIndex] != Color.NONE) {
+			while (rowIndex < m_grid[column].length && m_grid[column][rowIndex] != Color.NONE) {
 				rowIndex++;
 			}
 
