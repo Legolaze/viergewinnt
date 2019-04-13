@@ -58,6 +58,21 @@ public class Board {
 
 	private void checkGameOver(int lastInsertedColumn, int lastInsertedRow) {
 		Color lastInsertedColor = m_grid[lastInsertedColumn][lastInsertedRow];
+
+		if (checkGameOverColumn(lastInsertedColumn, lastInsertedRow, lastInsertedColor)
+				|| checkGameOverRow(lastInsertedColumn, lastInsertedRow, lastInsertedColor)
+				|| checkGameOverDiagonalBackslah(lastInsertedColumn, lastInsertedRow, lastInsertedColor)
+				|| checkGameOverDiagonalForwardslah(lastInsertedColumn, lastInsertedRow, lastInsertedColor)) {
+
+			m_gameOver = true;
+			m_winner = lastInsertedColor;
+
+		}
+	}
+
+	private boolean checkGameOverColumn(int lastInsertedColumn, int lastInsertedRow, Color lastInsertedColor) {
+		boolean result = false;
+
 		int count = 0;
 		for (int row = lastInsertedRow; row >= 0; row--) {
 			if (m_grid[lastInsertedColumn][row] == lastInsertedColor) {
@@ -65,9 +80,26 @@ public class Board {
 			}
 		}
 		if (count >= 4) {
-			m_gameOver = true;
-			m_winner = lastInsertedColor;
+			result = true;
 		}
+		return result;
+	}
+
+	private boolean checkGameOverRow(int lastInsertedColumn, int lastInsertedRow, Color lastInsertedColor) {
+		// TODO [akratash] implement
+		return false;
+	}
+
+	private boolean checkGameOverDiagonalBackslah(int lastInsertedColumn, int lastInsertedRow,
+			Color lastInsertedColor) {
+		// TODO [akratash] implement
+		return false;
+	}
+
+	private boolean checkGameOverDiagonalForwardslah(int lastInsertedColumn, int lastInsertedRow,
+			Color lastInsertedColor) {
+		// TODO [akratash] implement
+		return false;
 	}
 
 	public Color getWinner() {
