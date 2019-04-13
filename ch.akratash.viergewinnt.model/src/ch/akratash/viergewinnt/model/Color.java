@@ -1,6 +1,6 @@
 package ch.akratash.viergewinnt.model;
 
-public enum FieldState {
+public enum Color {
 	RED,
 	YELLOW,
 	NONE
