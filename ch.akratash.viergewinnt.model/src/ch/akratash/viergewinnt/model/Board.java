@@ -5,11 +5,13 @@ public class Board {
 	private Color[][] m_grid;
 	private boolean m_gameOver;
 	private Color m_activePlayer;
+	private Color m_winner;
 
 	public Board() {
 		m_gameOver = false;
 		m_grid = new Color[7][6];
 		m_activePlayer = Color.RED;
+		m_winner = Color.NONE;
 
 		for (int column = 0; column < m_grid.length; column++) {
 			for (int row = 0; row < m_grid[column].length; row++) {
@@ -43,9 +45,32 @@ public class Board {
 				m_grid[column][rowIndex] = m_activePlayer;
 				switchPlayer();
 				result = true;
+				checkGameOver(column, rowIndex);
 			}
 		}
 
 		return result;
+	}
+
+	public boolean isGameOver() {
+		return m_gameOver;
+	}
+
+	private void checkGameOver(int lastInsertedColumn, int lastInsertedRow) {
+		Color lastInsertedColor = m_grid[lastInsertedColumn][lastInsertedRow];
+		int count = 0;
+		for (int row = lastInsertedRow; row >= 0; row--) {
+			if (m_grid[lastInsertedColumn][row] == lastInsertedColor) {
+				count++;
+			}
+		}
+		if (count >= 4) {
+			m_gameOver = true;
+			m_winner = lastInsertedColor;
+		}
+	}
+
+	public Color getWinner() {
+		return m_winner;
 	}
 }
