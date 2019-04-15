@@ -1,8 +1,9 @@
 package ch.akratash.viergewinnt.model;
 
 /**
- * @author bztadmin
- * BRUUUUUUUUUUUUUUUUUCHTS DA MOIIIIIIIIIIGAAAAAAAAAAAAAAAAAAAAAA
+ * @author Akratash
+ * 2Dimensionales Array mit 2 Instanzierungsvariabeln
+ * und einer Abfrage ob das Spiel over ist
  */
 public class Board {
 
@@ -11,12 +12,24 @@ public class Board {
 	private Color m_activePlayer;
 	private Color m_winner;
 
+	/**
+	 * @author Akratash
+	 * Default Zustände des Boards
+	 * GameOver Zustand auf false
+	 * neues 2 Dimensionales Array 7Felder breit 6Felder tief
+	 * Der Rote Spieler beginnt
+	 * GewinnerZustand ist enum None zu Beginn des Spiels
+	 * 
+	 */
 	public Board() {
 		m_gameOver = false;
 		m_grid = new Color[7][6];
 		m_activePlayer = Color.RED;
 		m_winner = Color.NONE;
-
+		/**
+		 * @author Akratash
+		 * überschreiben der NULL Werte im Array auf den Zustand NONE
+		 */
 		for (int column = 0; column < m_grid.length; column++) {
 			for (int row = 0; row < m_grid[column].length; row++) {
 				m_grid[column][row] = Color.NONE;
@@ -25,6 +38,10 @@ public class Board {
 
 	}
 
+	/**
+	 * @author Akratash
+	 * Methode um den Spieler nach vollendetem Zug zu wechseln
+	 */
 	private void switchPlayer() {
 		if (m_gameOver) {
 			m_activePlayer = Color.NONE;
