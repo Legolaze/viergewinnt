@@ -1,5 +1,9 @@
 package ch.akratash.viergewinnt.model;
 
+/**
+ * @author bztadmin
+ * BRUUUUUUUUUUUUUUUUUCHTS DA MOIIIIIIIIIIGAAAAAAAAAAAAAAAAAAAAAA
+ */
 public class Board {
 
 	private Color[][] m_grid;
