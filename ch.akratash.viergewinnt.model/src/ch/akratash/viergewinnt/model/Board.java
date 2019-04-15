@@ -91,6 +91,17 @@ public class Board {
 		}
 	}
 
+	/**
+	 * @author Akratash
+	 * Methode zum ermitteln ob einer der Spieler Yellow/Red gewonnen hat.
+	 * indem der Count  hochzählt wenn das Array m_gridn über column und row == letzte Farbe ist
+	 * mit der Abfrage am Schluss ob der Count die 4 erreicht um das Spiel zu gewinnen
+	 * wenn dies der Fall  ist wird boolean result=true und return result zurückgegeben
+	 * @param lastInsertedColumn
+	 * @param lastInsertedRow
+	 * @param lastInsertedColor
+	 * @return
+	 */
 	private boolean checkGameOverColumn(int lastInsertedColumn, int lastInsertedRow, Color lastInsertedColor) {
 		boolean result = false;
 
