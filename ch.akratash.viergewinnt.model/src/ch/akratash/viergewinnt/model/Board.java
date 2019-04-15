@@ -86,19 +86,19 @@ public class Board {
 	}
 
 	private boolean checkGameOverRow(int lastInsertedColumn, int lastInsertedRow, Color lastInsertedColor) {
-		// TODO [akratash] implement
+		// TODO
 		return false;
 	}
 
 	private boolean checkGameOverDiagonalBackslah(int lastInsertedColumn, int lastInsertedRow,
 			Color lastInsertedColor) {
-		// TODO [akratash] implement
+		// TODO
 		return false;
 	}
 
 	private boolean checkGameOverDiagonalForwardslah(int lastInsertedColumn, int lastInsertedRow,
 			Color lastInsertedColor) {
-		// TODO [akratash] implement
+		// TODO
 		return false;
 	}
 
