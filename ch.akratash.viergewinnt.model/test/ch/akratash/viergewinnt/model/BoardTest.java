@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * @author Akratash
  * implementierung verschiedener Testverfahren zum schnellen validieren des eigenen Codes
  */
 
@@ -21,7 +20,6 @@ public class BoardTest {
 	}
 
 	/**
-	 * @author Akratash
 	 * Test um die Spielfeldgrenze zu testen
 	 * erwartet wird False da -1 und 7 out of Field ist.
 	 * [0 1 2 3 4 5 6] 
@@ -41,7 +39,6 @@ public class BoardTest {
 	}
 
 	/**
-	 * @author Akratash
 	 * @Test erwartet True für den letzten Spielstein in der Höhe zu setzen
 	 * an Index 5
 	 */
@@ -59,7 +56,6 @@ public class BoardTest {
 	}
 
 	/**
-	 * @author Akratash
 	 * @Test erwartet false für einen Stein der überhalb des Arrays plaziert werden will
 	 * [0 1 2 3 4 5] 6
 	 */
@@ -78,8 +74,6 @@ public class BoardTest {
 	}
 
 	/**
-	 * @author Akratash
-	 * einfacher Test um zu testen ob das Spiel gewonnen ist in einer Spalte
 	 * 
 	 * N N N N N N N 
 	 * N N N N N N N
@@ -131,7 +125,7 @@ public class BoardTest {
 	 * 0 0 0 0 0 0 0 
 	 * 0 Y 0 0 0 0 0
 	 * R Y 0 0 0 0 0
-	 * R Y 0 0 0 0 0
+	 * R Y 0 0 0 0 0l
 	 * R Y R 0 0 0 0
 	 */
 	@Test

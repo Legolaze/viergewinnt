@@ -1,7 +1,6 @@
 package ch.akratash.viergewinnt.model;
 
 /**
- * @author Akratash
  * 2Dimensionales Array mit 2 Instanzierungsvariabeln
  * und einer Abfrage ob das Spiel over ist
  */
@@ -13,7 +12,6 @@ public class Board {
 	private Color m_winner;
 
 	/**
-	 * @author Akratash
 	 * Default Zustände des Boards
 	 * GameOver Zustand auf false
 	 * neues 2 Dimensionales Array 7Felder breit 6Felder tief
@@ -27,7 +25,6 @@ public class Board {
 		m_activePlayer = Color.RED;
 		m_winner = Color.NONE;
 		/**
-		 * @author Akratash
 		 * überschreiben der NULL Werte im Array auf den Zustand NONE
 		 */
 		for (int column = 0; column < m_grid.length; column++) {
@@ -39,7 +36,6 @@ public class Board {
 	}
 
 	/**
-	 * @author Akratash
 	 * Methode um den Spieler nach vollendetem Zug zu wechseln
 	 */
 	private void switchPlayer() {
@@ -92,7 +88,6 @@ public class Board {
 	}
 
 	/**
-	 * @author Akratash
 	 * Methode zum ermitteln ob einer der Spieler Yellow/Red gewonnen hat.
 	 * indem der Count  hochzählt wenn das Array m_gridn über column und row == letzte Farbe ist
 	 * mit der Abfrage am Schluss ob der Count die 4 erreicht um das Spiel zu gewinnen
@@ -100,7 +95,7 @@ public class Board {
 	 * @param lastInsertedColumn
 	 * @param lastInsertedRow
 	 * @param lastInsertedColor
-	 * @return
+	 * @return result
 	 */
 	private boolean checkGameOverColumn(int lastInsertedColumn, int lastInsertedRow, Color lastInsertedColor) {
 		boolean result = false;
@@ -118,8 +113,17 @@ public class Board {
 	}
 
 	private boolean checkGameOverRow(int lastInsertedColumn, int lastInsertedRow, Color lastInsertedColor) {
-		// TODO
-		return false;
+
+		boolean result = false;
+		int count = 0;
+		for (int column = lastInsertedColumn; column >= 0; column--)
+			if (m_grid[column][lastInsertedRow] == lastInsertedColor) {
+				count++;
+			}
+		if (count >= 4) {
+			result = true;
+		}
+		return result;
 	}
 
 	private boolean checkGameOverDiagonalBackslah(int lastInsertedColumn, int lastInsertedRow,
