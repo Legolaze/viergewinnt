@@ -167,4 +167,20 @@ public class BoardTest {
 
 		assertEquals(Color.YELLOW, board.getWinner());
 	}
+
+	@Test
+	public void testRedWinsInSameRowExpectTrue() {
+		Board board = new Board();
+
+		board.setStone(0); // RED
+		board.setStone(0);// YELLOW
+		board.setStone(1);
+		board.setStone(1);
+		board.setStone(2);
+		board.setStone(2);
+		board.setStone(3);// RED Wins
+
+		assertEquals(Color.RED, board.getWinner());
+	}
+
 }
