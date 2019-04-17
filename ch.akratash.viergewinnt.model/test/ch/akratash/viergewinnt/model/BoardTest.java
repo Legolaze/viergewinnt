@@ -125,7 +125,7 @@ public class BoardTest {
 	 * 0 0 0 0 0 0 0 
 	 * 0 Y 0 0 0 0 0
 	 * R Y 0 0 0 0 0
-	 * R Y 0 0 0 0 0l
+	 * R Y 0 0 0 0 0
 	 * R Y R 0 0 0 0
 	 */
 	@Test
