@@ -16,7 +16,7 @@ public class BoardTest {
 	public void testSetFirstStoneExceptTrue() {
 		Board board = new Board();
 
-		assertTrue(board.setStone(0));
+		assertTrue(board.makeMove(0));
 	}
 
 	/**
@@ -28,14 +28,14 @@ public class BoardTest {
 	public void testSetFirstStoneToLeftExpectFalse() {
 		Board board = new Board();
 
-		assertFalse(board.setStone(-1));
+		assertFalse(board.makeMove(-1));
 	}
 
 	@Test
 	public void testSetFirstStoneToRightExpectFalse() {
 		Board board = new Board();
 
-		assertFalse(board.setStone(7));
+		assertFalse(board.makeMove(7));
 	}
 
 	/**
@@ -46,13 +46,13 @@ public class BoardTest {
 	public void testSetLastStoneInColExceptTrue() {
 		Board board = new Board();
 
-		board.setStone(0);
-		board.setStone(0);
-		board.setStone(0);
-		board.setStone(0);
-		board.setStone(0);
+		board.makeMove(0);
+		board.makeMove(0);
+		board.makeMove(0);
+		board.makeMove(0);
+		board.makeMove(0);
 
-		assertTrue(board.setStone(0));
+		assertTrue(board.makeMove(0));
 	}
 
 	/**
@@ -63,14 +63,14 @@ public class BoardTest {
 	public void testSetLastStoneAlreadySetInColExceptFalse() {
 		Board board = new Board();
 
-		board.setStone(0);
-		board.setStone(0);
-		board.setStone(0);
-		board.setStone(0);
-		board.setStone(0);
-		board.setStone(0); // this is the last
+		board.makeMove(0);
+		board.makeMove(0);
+		board.makeMove(0);
+		board.makeMove(0);
+		board.makeMove(0);
+		board.makeMove(0); // this is the last
 
-		assertFalse(board.setStone(0));
+		assertFalse(board.makeMove(0));
 	}
 
 	/**
@@ -86,13 +86,13 @@ public class BoardTest {
 	public void testIsGameOverInSameColExpectTrue() {
 		Board board = new Board();
 
-		board.setStone(0); // RED
-		board.setStone(1);// YELLOW
-		board.setStone(0);
-		board.setStone(1);
-		board.setStone(0);
-		board.setStone(1);
-		board.setStone(0);// RED Wins
+		board.makeMove(0); // RED
+		board.makeMove(1);// YELLOW
+		board.makeMove(0);
+		board.makeMove(1);
+		board.makeMove(0);
+		board.makeMove(1);
+		board.makeMove(0);// RED Wins
 
 		assertTrue(board.isGameOver());
 	}
@@ -109,13 +109,13 @@ public class BoardTest {
 	public void testRedWinsInSameColExpectTrue() {
 		Board board = new Board();
 
-		board.setStone(0); // RED
-		board.setStone(1);// YELLOW
-		board.setStone(0);
-		board.setStone(1);
-		board.setStone(0);
-		board.setStone(1);
-		board.setStone(0);// RED Wins
+		board.makeMove(0); // RED
+		board.makeMove(1);// YELLOW
+		board.makeMove(0);
+		board.makeMove(1);
+		board.makeMove(0);
+		board.makeMove(1);
+		board.makeMove(0);// RED Wins
 
 		assertEquals(Color.RED, board.getWinner());
 	}
@@ -132,14 +132,14 @@ public class BoardTest {
 	public void testYellowWinsInSameColExpectTrue() {
 		Board board = new Board();
 
-		board.setStone(0); // RED
-		board.setStone(1);// YELLOW
-		board.setStone(0);
-		board.setStone(1);
-		board.setStone(0);
-		board.setStone(1);
-		board.setStone(2);
-		board.setStone(1);// Yellow Wins
+		board.makeMove(0); // RED
+		board.makeMove(1);// YELLOW
+		board.makeMove(0);
+		board.makeMove(1);
+		board.makeMove(0);
+		board.makeMove(1);
+		board.makeMove(2);
+		board.makeMove(1);// Yellow Wins
 
 		assertEquals(Color.YELLOW, board.getWinner());
 	}
@@ -156,14 +156,14 @@ public class BoardTest {
 	public void testYellowWinsInSameColRedIsLowestExpectTrue() {
 		Board board = new Board();
 
-		board.setStone(1); // RED
-		board.setStone(1); // YELLOW
-		board.setStone(0);
-		board.setStone(1);
-		board.setStone(0);
-		board.setStone(1);
-		board.setStone(2);
-		board.setStone(1); // Yellow Wins
+		board.makeMove(1); // RED
+		board.makeMove(1); // YELLOW
+		board.makeMove(0);
+		board.makeMove(1);
+		board.makeMove(0);
+		board.makeMove(1);
+		board.makeMove(2);
+		board.makeMove(1); // Yellow Wins
 
 		assertEquals(Color.YELLOW, board.getWinner());
 	}
@@ -172,13 +172,69 @@ public class BoardTest {
 	public void testRedWinsInSameRowExpectTrue() {
 		Board board = new Board();
 
-		board.setStone(0); // RED
-		board.setStone(0);// YELLOW
-		board.setStone(1);
-		board.setStone(1);
-		board.setStone(2);
-		board.setStone(2);
-		board.setStone(3);// RED Wins
+		board.makeMove(0); // RED
+		board.makeMove(0);// YELLOW
+		board.makeMove(1);
+		board.makeMove(1);
+		board.makeMove(2);
+		board.makeMove(2);
+		board.makeMove(3);// RED Wins
+
+		assertEquals(Color.RED, board.getWinner());
+	}
+
+	@Test
+	public void testAfterGameOverWinnerCannotBeChanged() {
+		Board board = new Board();
+
+		board.makeMove(0); // RED
+		board.makeMove(0); // YELLOW
+		board.makeMove(1);
+		board.makeMove(1);
+		board.makeMove(2);
+		board.makeMove(2);
+		board.makeMove(3); // RED Wins
+		board.makeMove(3); // YELLOW do not override winner
+
+		assertEquals(Color.RED, board.getWinner());
+	}
+
+	@Test
+	public void testRedWinsInSameRowExpectTrue2() {
+		Board board = new Board();
+
+		board.makeMove(3); // RED
+		board.makeMove(3);// YELLOW
+		board.makeMove(2);
+		board.makeMove(2);
+		board.makeMove(1);
+		board.makeMove(1);
+		board.makeMove(0);// RED Wins
+
+		assertEquals(Color.RED, board.getWinner());
+	}
+
+	@Test
+	public void testRedWinsDiagonalBackslashExpectTrue() {
+		Board board = new Board();
+
+		board.makeMove(3); // RED
+		board.makeMove(2);// YELLOW
+
+		board.makeMove(1);
+		board.makeMove(0);
+
+		board.makeMove(2);
+		board.makeMove(1);
+
+		board.makeMove(1);
+		board.makeMove(0);
+
+		board.makeMove(0);
+		board.makeMove(4);
+
+		board.makeMove(0);
+		board.makeMove(0);
 
 		assertEquals(Color.RED, board.getWinner());
 	}
