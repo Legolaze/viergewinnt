@@ -95,7 +95,7 @@ public class Board {
 		Color lastInsertedColor = m_grid[lastInsertedColumn][lastInsertedRow];
 
 		if (!m_gameOver && (checkGameOverColumn(lastInsertedColumn, lastInsertedRow, lastInsertedColor) || checkGameOverRow(lastInsertedColumn, lastInsertedRow, lastInsertedColor)
-				|| checkGameOverDiagonalBackslah(lastInsertedColumn, lastInsertedRow, lastInsertedColor) || checkGameOverDiagonalForwardslah(lastInsertedColumn, lastInsertedRow, lastInsertedColor))) {
+				|| checkGameOverDiagonalBackslash(lastInsertedColumn, lastInsertedRow, lastInsertedColor) || checkGameOverDiagonalForwardslash(lastInsertedColumn, lastInsertedRow, lastInsertedColor))) {
 
 			m_gameOver = true;
 			m_winner = lastInsertedColor;
@@ -150,7 +150,7 @@ public class Board {
 		return result;
 	}
 
-	private boolean checkGameOverDiagonalBackslah(final int lastInsertedColumn, final int lastInsertedRow, final Color lastInsertedColor) {
+	private boolean checkGameOverDiagonalBackslash(final int lastInsertedColumn, final int lastInsertedRow, final Color lastInsertedColor) {
 
 		boolean result = false;
 		int count = 0;
@@ -170,7 +170,7 @@ public class Board {
 		return result;
 	}
 
-	private boolean checkGameOverDiagonalForwardslah(final int lastInsertedColumn, final int lastInsertedRow, final Color lastInsertedColor) {
+	private boolean checkGameOverDiagonalForwardslash(final int lastInsertedColumn, final int lastInsertedRow, final Color lastInsertedColor) {
 		// TODO
 		return false;
 	}
