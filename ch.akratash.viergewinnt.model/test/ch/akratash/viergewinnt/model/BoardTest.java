@@ -214,6 +214,14 @@ public class BoardTest {
 		assertEquals(Color.RED, board.getWinner());
 	}
 
+	/**
+	 * 0 0 0 0 0 0 0
+	 * Y 0 0 0 0 0 0 
+	 * R 0 0 0 0 0 0
+	 * R R 0 0 0 0 0
+	 * Y Y R 0 0 0 0
+	 * Y R Y R Y 0 0
+	 */
 	@Test
 	public void testRedWinsDiagonalBackslashExpectTrue() {
 		Board board = new Board();
@@ -237,6 +245,36 @@ public class BoardTest {
 		board.makeMove(0);
 
 		assertEquals(Color.RED, board.getWinner());
+	}
+
+	/**
+	 * 0 0 0 0 0 0 0
+	 * 0 0 0 0 0 0 0 
+	 * 0 0 0 0 0 0 Y
+	 * 0 0 0 0 0 Y R
+	 * 0 0 0 0 Y R Y
+	 * 0 0 0 Y R R R
+	 */
+	@Test
+	public void testYellowWinsDiagonalForwardslashExpectTrue() {
+		Board board = new Board();
+
+		board.makeMove(4); // RED
+		board.makeMove(3);// YELLOW
+
+		board.makeMove(5);
+		board.makeMove(4);
+
+		board.makeMove(5);
+		board.makeMove(5);
+
+		board.makeMove(6);
+		board.makeMove(6);
+
+		board.makeMove(6);
+		board.makeMove(6);
+
+		assertEquals(Color.YELLOW, board.getWinner());
 	}
 
 }
