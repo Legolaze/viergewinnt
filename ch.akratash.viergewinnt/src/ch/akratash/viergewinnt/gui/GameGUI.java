@@ -20,8 +20,4 @@ public class GameGUI extends Application {
 		}
 	}
 
-	public static void main(String[] args) {
-		Application.launch(GameGUI.class, args);
-	}
-
 }
