@@ -277,4 +277,17 @@ public class BoardTest {
 		assertEquals(Color.YELLOW, board.getWinner());
 	}
 
+	/**
+	 * Y Y 0 R
+	 * R R 0 Y
+	 * Y Y 0 R
+	 * R R 0 Y
+	 * Y Y 0 R
+	 * R R 0 Y
+	 */
+	@Test
+	public void testcheckGameOverBoardFullNoWinnerExpectTrue() {
+
+	}
+
 }
