@@ -278,16 +278,82 @@ public class BoardTest {
 	}
 
 	/**
-	 * Y Y 0 R
-	 * R R 0 Y
-	 * Y Y 0 R
-	 * R R 0 Y
-	 * Y Y 0 R
-	 * R R 0 Y
+	 * Y R Y Y Y R Y
+	 * R Y R R R Y R 
+	 * Y R Y Y Y R Y
+	 * R Y R R R Y R
+	 * Y R Y Y Y R Y
+	 * R Y R R R Y R
 	 */
+
 	@Test
 	public void testcheckGameOverBoardFullNoWinnerExpectTrue() {
+		Board board = new Board();
 
+		board.makeMove(0); // RED
+		board.makeMove(0);// YELLOW
+
+		board.makeMove(0);
+		board.makeMove(0);
+
+		board.makeMove(0);
+		board.makeMove(0);
+
+		board.makeMove(6);
+		board.makeMove(1);
+
+		board.makeMove(1);
+		board.makeMove(1);
+
+		board.makeMove(1);
+		board.makeMove(1);
+
+		board.makeMove(1);
+		board.makeMove(6);
+
+		board.makeMove(2);
+		board.makeMove(2);
+
+		board.makeMove(2);
+		board.makeMove(2);
+
+		board.makeMove(2);
+		board.makeMove(2);
+
+		board.makeMove(3);
+		board.makeMove(3);
+
+		board.makeMove(3);
+		board.makeMove(3);
+
+		board.makeMove(3);
+		board.makeMove(3);
+
+		board.makeMove(4);
+		board.makeMove(4);
+
+		board.makeMove(4);
+		board.makeMove(4);
+
+		board.makeMove(4);
+		board.makeMove(4);
+
+		board.makeMove(6);
+		board.makeMove(5);
+
+		board.makeMove(5);
+		board.makeMove(5);
+
+		board.makeMove(5);
+		board.makeMove(5);
+
+		board.makeMove(5);
+		board.makeMove(6);
+
+		board.makeMove(6);
+		board.makeMove(6);
+
+		assertEquals(Color.NONE, board.getWinner());
 	}
 
 }
