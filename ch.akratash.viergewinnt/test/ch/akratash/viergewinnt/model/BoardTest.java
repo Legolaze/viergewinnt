@@ -285,7 +285,6 @@ public class BoardTest {
 	 * Y R Y Y Y R Y
 	 * R Y R R R Y R
 	 */
-
 	@Test
 	public void testcheckGameOverBoardFullNoWinnerExpectTrue() {
 		Board board = new Board();
@@ -354,6 +353,53 @@ public class BoardTest {
 		board.makeMove(6);
 
 		assertEquals(Color.NONE, board.getWinner());
+		assertTrue(board.isGameOver());
+	}
+
+	/**
+	 * Y Y 
+	 * R R 
+	 */
+	@Test
+	public void testcheckIsGameOverBoardFullNoWinnerExpectTrue() {
+		Board board = new Board(2, 2);
+
+		board.makeMove(0); // RED
+		board.makeMove(0);// YELLOW
+
+		board.makeMove(1);
+		board.makeMove(1);
+
+		assertTrue(board.isGameOver());
+	}
+
+	/**
+	 * 0 0 0 0 0 0 0
+	 * R 0 0 0 0 0 0 
+	 * R Y 0 0 0 0 0
+	 * R Y 0 0 0 0 0
+	 * Y R 0 0 0 0 0
+	 * R Y 0 0 0 0 0
+	 */
+	@Test
+	public void testcheckIsGameOverIfSameR4TimesInColYellowBetweenExpectFalse() {
+		Board board = new Board();
+
+		board.makeMove(0); // RED
+		board.makeMove(0);// YELLOW
+
+		board.makeMove(1);
+		board.makeMove(1);
+
+		board.makeMove(0);
+		board.makeMove(1);
+
+		board.makeMove(0);
+		board.makeMove(1);
+
+		board.makeMove(0);
+
+		assertFalse(board.isGameOver());
 	}
 
 }

@@ -95,8 +95,8 @@ public class Board {
 		Color lastInsertedColor = m_grid[lastInsertedColumn][lastInsertedRow];
 
 		if (!m_gameOver && (checkGameOverColumn(lastInsertedColumn, lastInsertedRow, lastInsertedColor) || checkGameOverRow(lastInsertedColumn, lastInsertedRow, lastInsertedColor)
-				|| checkGameOverDiagonalBackslash(lastInsertedColumn, lastInsertedRow, lastInsertedColor)
-				|| checkGameOverDiagonalForwardslash(lastInsertedColumn, lastInsertedRow, lastInsertedColor))) {
+				|| checkGameOverDiagonalBackslash(lastInsertedColumn, lastInsertedRow, lastInsertedColor) || checkGameOverDiagonalForwardslash(lastInsertedColumn, lastInsertedRow, lastInsertedColor)
+				|| checkGameOverBoardFullNoWinner(lastInsertedRow))) {
 
 			m_gameOver = true;
 			m_winner = lastInsertedColor;
@@ -123,6 +123,8 @@ public class Board {
 		for (int row = lastInsertedRow; row >= 0; row--) {
 			if (m_grid[lastInsertedColumn][row] == lastInsertedColor) {
 				count++;
+			} else {
+				break;
 			}
 		}
 		if (count >= 4) {
@@ -140,7 +142,7 @@ public class Board {
 				count++;
 			}
 		}
-		for (int column = lastInsertedColumn + 1; column < DEFAULT_COLUMNS; column++) {
+		for (int column = lastInsertedColumn + 1; column < m_grid.length; column++) {
 			if (m_grid[column][lastInsertedRow] == lastInsertedColor) {
 				count++;
 			}
@@ -155,12 +157,12 @@ public class Board {
 
 		boolean result = false;
 		int count = 0;
-		for (int column = lastInsertedColumn, row = lastInsertedRow; column >= 0 && row < DEFAULT_ROWS; column--, row++) {
+		for (int column = lastInsertedColumn, row = lastInsertedRow; column >= 0 && row < m_grid[column].length; column--, row++) {
 			if (m_grid[column][row] == lastInsertedColor) {
 				count++;
 			}
 		}
-		for (int column = lastInsertedColumn + 1, row = lastInsertedRow - 1; column < DEFAULT_COLUMNS && row >= 0; column++, row--) {
+		for (int column = lastInsertedColumn + 1, row = lastInsertedRow - 1; column < m_grid.length && row >= 0; column++, row--) {
 			if (m_grid[column][row] == lastInsertedColor) {
 				count++;
 			}
@@ -180,7 +182,7 @@ public class Board {
 			}
 
 		}
-		for (int column = lastInsertedColumn + 1, row = lastInsertedRow + 1; column < DEFAULT_COLUMNS && row < DEFAULT_ROWS; column++, row++) {
+		for (int column = lastInsertedColumn + 1, row = lastInsertedRow + 1; column < m_grid.length && row < m_grid[column].length; column++, row++) {
 			if (m_grid[column][row] == lastInsertedColor) {
 				count++;
 			}
@@ -188,6 +190,21 @@ public class Board {
 		if (count >= 4) {
 			result = true;
 		}
+		return result;
+	}
+
+	private boolean checkGameOverBoardFullNoWinner(final int lastInsertedRow) {
+		boolean result = false;
+		int count = 0;
+
+		for (int column = 0; column < m_grid.length && lastInsertedRow == m_grid[column].length - 1; column++) {
+			count++;
+		}
+
+		if (count >= m_grid.length) {
+			result = true;
+		}
+
 		return result;
 	}
 
