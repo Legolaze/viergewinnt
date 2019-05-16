@@ -382,7 +382,7 @@ public class BoardTest {
 	 * R Y 0 0 0 0 0
 	 */
 	@Test
-	public void testcheckIsGameOverIfSameR4TimesInColYellowBetweenExpectFalse() {
+	public void testcheckIsGameOverIfRed4TimesInColYellowBetweenExpectFalse() {
 		Board board = new Board();
 
 		board.makeMove(0); // RED
@@ -398,6 +398,71 @@ public class BoardTest {
 		board.makeMove(1);
 
 		board.makeMove(0);
+
+		assertFalse(board.isGameOver());
+	}
+
+	/**
+	 * 0 0 0 0 0 0 0
+	 * 0 0 0 0 0 0 0 
+	 * 0 0 0 0 0 0 0
+	 * 0 0 0 0 0 0 0
+	 * Y 0 0 0 0 0 0
+	 * R Y R Y R Y R
+	 */
+	@Test
+	public void testcheckIsGameOverIfRed4TimesInRowYellowBetweenExpectFalse() {
+		Board board = new Board();
+
+		board.makeMove(0); // RED
+		board.makeMove(1);// YELLOW
+
+		board.makeMove(2);
+		board.makeMove(3);
+
+		board.makeMove(4);
+		board.makeMove(5);
+
+		board.makeMove(6);
+		board.makeMove(0);
+
+		assertFalse(board.isGameOver());
+	}
+
+	/**
+	 * 0 0 0 0 0 0 0
+	 * 0 0 0 0 0 0 0 
+	 * 0 0 0 R 0 0 0
+	 * 0 0 R Y 0 0 0
+	 * 0 R R R 0 0 0
+	 * R Y Y Y 0 0 0
+	 */
+	@Test
+	public void testcheckIsGameOverIfRed4TimesInDiagonallyYellowBetweenExpectFalse() {
+		Board board = new Board();
+
+		board.makeMove(0); // RED
+		board.makeMove(1);// YELLOW
+
+		board.makeMove(1);
+		board.makeMove(2);
+
+		board.makeMove(2);
+		board.makeMove(3);
+
+		board.makeMove(2);
+		board.makeMove(3);
+
+		board.makeMove(3);
+		board.makeMove(3);
+
+		board.makeMove(4);
+		board.makeMove(4);
+
+		board.makeMove(4);
+		board.makeMove(4);
+
+		board.makeMove(4);
 
 		assertFalse(board.isGameOver());
 	}
