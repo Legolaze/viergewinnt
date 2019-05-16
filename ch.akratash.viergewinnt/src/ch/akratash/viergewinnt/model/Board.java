@@ -140,11 +140,15 @@ public class Board {
 		for (int column = lastInsertedColumn; column >= 0; column--) {
 			if (m_grid[column][lastInsertedRow] == lastInsertedColor) {
 				count++;
+			} else {
+				break;
 			}
 		}
 		for (int column = lastInsertedColumn + 1; column < m_grid.length; column++) {
 			if (m_grid[column][lastInsertedRow] == lastInsertedColor) {
 				count++;
+			} else {
+				break;
 			}
 		}
 		if (count >= 4) {
@@ -160,11 +164,15 @@ public class Board {
 		for (int column = lastInsertedColumn, row = lastInsertedRow; column >= 0 && row < m_grid[column].length; column--, row++) {
 			if (m_grid[column][row] == lastInsertedColor) {
 				count++;
+			} else {
+				break;
 			}
 		}
 		for (int column = lastInsertedColumn + 1, row = lastInsertedRow - 1; column < m_grid.length && row >= 0; column++, row--) {
 			if (m_grid[column][row] == lastInsertedColor) {
 				count++;
+			} else {
+				break;
 			}
 		}
 		if (count >= 4) {
@@ -179,12 +187,16 @@ public class Board {
 		for (int column = lastInsertedColumn, row = lastInsertedRow; column >= 0 && row >= 0; column--, row--) {
 			if (m_grid[column][row] == lastInsertedColor) {
 				count++;
+			} else {
+				break;
 			}
 
 		}
 		for (int column = lastInsertedColumn + 1, row = lastInsertedRow + 1; column < m_grid.length && row < m_grid[column].length; column++, row++) {
 			if (m_grid[column][row] == lastInsertedColor) {
 				count++;
+			} else {
+				break;
 			}
 		}
 		if (count >= 4) {
