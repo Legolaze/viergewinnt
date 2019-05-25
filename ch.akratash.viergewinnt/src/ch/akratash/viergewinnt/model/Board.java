@@ -91,16 +91,22 @@ public class Board {
 		return m_gameOver;
 	}
 
+	/**
+	 * 
+	 * @param lastInsertedColumn
+	 * @param lastInsertedRow
+	 */
 	private void checkGameOver(final int lastInsertedColumn, final int lastInsertedRow) {
 		Color lastInsertedColor = m_grid[lastInsertedColumn][lastInsertedRow];
 
-		if (!m_gameOver && (checkGameOverColumn(lastInsertedColumn, lastInsertedRow, lastInsertedColor) || checkGameOverRow(lastInsertedColumn, lastInsertedRow, lastInsertedColor)
-				|| checkGameOverDiagonalBackslash(lastInsertedColumn, lastInsertedRow, lastInsertedColor) || checkGameOverDiagonalForwardslash(lastInsertedColumn, lastInsertedRow, lastInsertedColor)
-				|| checkGameOverBoardFullNoWinner(lastInsertedRow))) {
-
+		if (!m_gameOver && (checkGameOverColumn(lastInsertedColumn, lastInsertedRow, lastInsertedColor)
+				|| checkGameOverRow(lastInsertedColumn, lastInsertedRow, lastInsertedColor)
+				|| checkGameOverDiagonalBackslash(lastInsertedColumn, lastInsertedRow, lastInsertedColor)
+				|| checkGameOverDiagonalForwardslash(lastInsertedColumn, lastInsertedRow, lastInsertedColor))) {
 			m_gameOver = true;
 			m_winner = lastInsertedColor;
-
+		} else if (checkGameOverBoardFullNoWinner(lastInsertedRow)) {
+			m_gameOver = true;
 		}
 	}
 
@@ -209,7 +215,7 @@ public class Board {
 		boolean result = false;
 		int count = 0;
 
-		for (int column = 0; column < m_grid.length && lastInsertedRow == m_grid[column].length - 1; column++) {
+		for (int column = 0; column < m_grid.length && m_grid[column][m_grid[0].length - 1] != Color.NONE; column++) {
 			count++;
 		}
 
