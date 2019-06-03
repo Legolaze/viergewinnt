@@ -12,7 +12,7 @@ public class GameGUI extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("gui.fxml"));
-			Scene scene = new Scene(root, 400, 400);
+			Scene scene = new Scene(root, 1000, 600);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {

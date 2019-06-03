@@ -229,4 +229,10 @@ public class Board {
 	public Color getWinner() {
 		return m_winner;
 	}
+
+	public Color getColor(int colIndex, int rowIndex) {
+		// TODO add check on array length (no arrayindexoutofbounds exceptions!!)
+		return m_grid[colIndex][rowIndex];
+	}
+
 }
