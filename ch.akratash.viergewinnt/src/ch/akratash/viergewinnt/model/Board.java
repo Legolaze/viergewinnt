@@ -56,7 +56,7 @@ public class Board {
 	}
 
 	/**
-	 * TBD, ausführlich beschreiben
+	 * Macht einen Spielschritt auf der Colmn für den nächsten Spieler.
 	 * 
 	 * @param column Spalte in welcher der Stein gesetzt wird
 	 * @return true falls valider Zug
@@ -278,6 +278,11 @@ public class Board {
 		return m_grid[colIndex][rowIndex];
 	}
 
+	/**
+	 * Gibt aktiven Spieler zurück.
+	 * 
+	 * 
+	 */
 	public Color getActivePlayer() {
 		return m_activePlayer;
 	}
