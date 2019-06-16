@@ -278,4 +278,8 @@ public class Board {
 		return m_grid[colIndex][rowIndex];
 	}
 
+	public Color getActivePlayer() {
+		return m_activePlayer;
+	}
+
 }
