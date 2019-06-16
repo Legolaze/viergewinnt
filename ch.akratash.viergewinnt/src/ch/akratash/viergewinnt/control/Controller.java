@@ -20,20 +20,12 @@ public class Controller {
 
 	@FXML
 	private void handleTestButtonAction(ActionEvent event) {
-		System.out.println("test auf console");
-		testLabel.setText("und auf dem label");
 
-//		grid.setGridLinesVisible(!grid.isGridLinesVisible());
-//		for (Node node : grid.getChildren()) {
-//			if (node instanceof Circle && GridPane.getColumnIndex(node) == 0) {
-//				Circle circle = (Circle) node;
-//				circle.setFill(Paint.valueOf("red"));
-//			}
-//		}
-
+		/**
+		 * Alle Nodes zu Circles umwandeln da erweiterte Programmierung möglich.
+		 */
 		m_board = new Board();
 
-		// TODO aktualisiere view mit neuem board (render all columns)
 		for (int i = 0; i < 7; i++) {
 			renderColumn(i);
 		}
@@ -44,7 +36,9 @@ public class Controller {
 			if (node instanceof Circle && GridPane.getColumnIndex(node) == columnIndex) {
 				Circle circle = (Circle) node;
 
-				// poliphormismus
+				/**
+				 * Invertieren der Rows des Grids da der Index sonst nicht für den Code passt
+				 */
 
 				int convertedRowIndex = (GridPane.getRowIndex(node) - 5) * -1;
 
@@ -59,6 +53,10 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * Buttons zum Steine setzen in der GUI mit der MAKEMOVE Methode
+	 * @param event m_board.makeMove();
+	 */
 	@FXML
 	private void handleSetCol0Action(ActionEvent event) {
 		m_board.makeMove(0);

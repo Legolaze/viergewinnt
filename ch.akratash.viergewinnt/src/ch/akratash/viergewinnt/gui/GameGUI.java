@@ -7,7 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class GameGUI extends Application {
-
+	/**
+	 * Die GameGui erstellen mit neuer Scene Grösse 1000x600
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		try {

@@ -139,6 +139,15 @@ public class Board {
 		return result;
 	}
 
+	/**
+	 * Prüft ob das Spiel zuende ist in dem es die Reihen nach 4 gleichfarbigen Spielsteinen in folge checkt,
+	 * falls dies der Fall ist gibt es result = true zurück.
+	 * 
+	 * @param lastInsertedColumn
+	 * @param lastInsertedRow
+	 * @param lastInsertedColor
+	 * @return true if game is over, false otherwise
+	 */
 	private boolean checkGameOverRow(final int lastInsertedColumn, final int lastInsertedRow, final Color lastInsertedColor) {
 
 		boolean result = false;
@@ -163,6 +172,15 @@ public class Board {
 		return result;
 	}
 
+	/**
+	 * Prüft ob das Spiel zuende ist in dem es die diagonale (Backslash \ ) auf 4 gleichfarbige Steine in folge prüft,
+	 * falls dies der Fall ist gibt es result = true zurück
+	 * 
+	 * @param lastInsertedColumn
+	 * @param lastInsertedRow
+	 * @param lastInsertedColor
+	 * @return true if game is over, false otherwise
+	 */
 	private boolean checkGameOverDiagonalBackslash(final int lastInsertedColumn, final int lastInsertedRow, final Color lastInsertedColor) {
 
 		boolean result = false;
@@ -187,6 +205,15 @@ public class Board {
 		return result;
 	}
 
+	/**
+	 * Prüft ob das Spiel zuende ist in dem es die diagonale (Slash / ) auf 4 gleichfarbige Steine in folge prüft,
+	 * falls dies der Fall ist gibt es result = true zurück
+	 * 
+	 * @param lastInsertedColumn
+	 * @param lastInsertedRow
+	 * @param lastInsertedColor
+	 * @return true if game is over, false otherwise
+	 */
 	private boolean checkGameOverDiagonalForwardslash(final int lastInsertedColumn, final int lastInsertedRow, final Color lastInsertedColor) {
 		boolean result = false;
 		int count = 0;
@@ -211,6 +238,12 @@ public class Board {
 		return result;
 	}
 
+	/**
+	 * Prüft ob das Spielfeld voll ist und es somit keinen Gewinner gibt.
+	 * 
+	 * @param lastInsertedRow
+	 * @return true if game is over, false otherwise
+	 */
 	private boolean checkGameOverBoardFullNoWinner(final int lastInsertedRow) {
 		boolean result = false;
 		int count = 0;
@@ -226,12 +259,22 @@ public class Board {
 		return result;
 	}
 
+	/**
+	 * Getter für den Gewinner
+	 * @return m_winner
+	 */
 	public Color getWinner() {
 		return m_winner;
 	}
 
+	/**
+	 * Liest die Spielsteinfarbe aus dem Ĝrid aus.
+	 * 
+	 * @param colIndex
+	 * @param rowIndex
+	 * @return m_grid[colIndex][rowIndex]
+	 */
 	public Color getColor(int colIndex, int rowIndex) {
-		// TODO add check on array length (no arrayindexoutofbounds exceptions!!)
 		return m_grid[colIndex][rowIndex];
 	}
 
